@@ -1,0 +1,41 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Vote</h2>
+
+<!-- <input type="text"  class="form-control"  (keyup.enter)="OnInput($event)" > -->
+
+
+<form [formGroup]="voteForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="value">
+          Value
+        </label>
+        <input id="value" type="text" formControlName="value">
+      </div>
+    
+      <div>
+        <label for="groupName">
+          Group Name
+        </label>
+        <input id="groupName" type="text" formControlName="groupName">
+      </div>
+
+    <button class="button" type="submit">Vote</button>
+  
+  </form>
+
+  <ul>
+    <li *ngFor="let vote of votes">
+      <span>{{vote.groupName}}</span> {{vote}}
+    </li>
+  </ul>
+
+</body>
+</html>
