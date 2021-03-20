@@ -5,10 +5,16 @@ import { FormsModule, ReactiveFormsModule  }   from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { PokerTableComponent } from './poker-table/poker-table.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    PokerTableComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
