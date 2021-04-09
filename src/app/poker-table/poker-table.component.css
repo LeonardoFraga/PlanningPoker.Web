@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "Kaushan Script";
+    src: local("Kaushan Script"), url(../../assets/fonts/kaushanScript/KaushanScript-Regular.ttf) format("truetype");
+}
+
+body {background-color: #35654d;}
+
+body {
+    background-color: #35654d;
+    width: 100%;
+    min-height:93vh;
+  }
+
+.navbar-logo {
+    font-family: "Kaushan Script";
+    color: white;
+    font-size: larger;
+}
+
+.navbar-brand {
+    float:none;
+}
+
+/*Cards*/
+.card {
+    display: inline-block;
+    width: 3.3em;
+    height: 4.6em;
+    border: 1px solid #666;
+    border-radius: .3em;
+    padding: .25em;
+    margin: 0 .5em .5em 0;
+    background-color: #fff;
+    box-shadow: .2em .2em .5em #333;
+    position: relative;
+  }
+  
+  .card-value {
+    text-align: center;
+    font-size: 1.0em; /* @change: adjust this value to make bigger or smaller cards */
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+    position: relative;
+    top: 30%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-symbol {
+    position:absolute;
+    top:0;
+    right:0;
+    font-size: 0.8em;
+  }
+  
+  .bottom-card-symbol {
+    position:absolute;
+    bottom:0;
+    right:0;
+    text-align: right;
+    font-size: 0.8em;
+  }
+  
+  a.card {
+    text-decoration: none;
+  }
+  

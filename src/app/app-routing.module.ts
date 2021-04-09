@@ -6,7 +6,7 @@ import { PokerTableComponent } from './poker-table/poker-table.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'poker-table/:porkerTableName', component: PokerTableComponent },
+  { path: 'poker-table/:id', component: PokerTableComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component:  NotFoundPageComponent}
 ];

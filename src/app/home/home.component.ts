@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SignalRService } from '../services/signal-r.service';
 import { cardsLengthValidator, commaSeparationValidator } from '../helpers/comma-separaton-validator';
+import { PokerTable } from '../models/poker-table';
+import { PokerTableService } from '../services/poker-table.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,7 @@ export class HomeComponent implements OnInit {
   createFormSubmitted = false;
   joinFormSubmitted = false;
   
-  constructor(private router: Router, public signalRService: SignalRService) { }
+  constructor(private router: Router, public signalRService: SignalRService, private pokerService: PokerTableService) { }
 
   ngOnInit(): void {
     this.buildCreateForm();
@@ -26,15 +28,12 @@ export class HomeComponent implements OnInit {
 
   onJoinSubmit(){
     this.joinFormSubmitted = true;
-    console.log('Join');
 
     if(this.joinForm.invalid){
       return;
     }
 
     var joinForm = this.joinForm.value;
-    console.log(joinForm);
-
     this.onSubmit(joinForm);
   }
 
@@ -45,18 +44,16 @@ export class HomeComponent implements OnInit {
       return;
     }
     
-    var createForm = this.createForm.value;
-    createForm.pokerTableId = this.generatePokerTableHash();
+    let pokerTable = this.createPokerTable(this.createForm.value);
+    
+    this.pokerService.savePokerTableCards(pokerTable);
 
-    this.onSubmit(createForm);
+    this.onSubmit(pokerTable);
   }
 
   onSubmit(form) {
-    // How to send info to another page
-
     this.signalRService.joinGroup(form.pokerTableId);
-    console.log(form);
-    this.router.navigate(['/poker-table', form.pokerTableName]);
+    this.router.navigate(['/poker-table', form.pokerTableId]);
   }
 
   onSelectedCardsChange(selectedCards: string){
@@ -85,5 +82,16 @@ export class HomeComponent implements OnInit {
 
   private generatePokerTableHash():string {
     return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  }
+
+  private createPokerTable(createForm): PokerTable{
+    let pokerTableId = this.generatePokerTableHash();
+    let selectedCards = createForm.selectedCards === 'Custom' 
+                          ? createForm.customCards
+                          : createForm.selectedCards
+
+    let pokerTable = new PokerTable(pokerTableId, selectedCards)
+
+    return pokerTable;
   }
 }
