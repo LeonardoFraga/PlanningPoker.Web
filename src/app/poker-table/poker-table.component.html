@@ -1,16 +1,17 @@
 <html>
 
-<nav class="navbar navbar-light" style="background-color: #477998;">
-  <div class="container-fluid nav justify-content-center">
-    <span class="navbar-logo">Custom Planning Poker</span>
-  </div>
-</nav>
-
 <body>
-  <div class="d-grid gap-2 d-md-block">
-    <button class="btn btn-secondary" type="button">New</button>
-    <button class="btn btn-primary" type="button">Reveal</button>
-  </div>
+  <nav class="navbar navbar-light" style="background-color: #477998;">
+    <div class="container-fluid nav justify-content-center">
+      <span class="navbar-logo">Custom Planning Poker</span>
+    </div>
+  </nav>
+  <!-- <div class="row nav justify-content-center">
+    <div class="col-md-1 display-cards" *ngFor="let card of cards">
+      <div class="col-md-12  back-card"></div>
+    </div>
+  </div> -->
+
   <footer class="fixed-bottom">
     <div class="row nav justify-content-center">
       <div class="col-md-1 card " *ngFor="let card of cards">
@@ -19,7 +20,7 @@
         <div class="col-md-12 bottom-card-symbol">A</div>
       </div>
     </div>
-
   </footer>
 </body>
+
 </html>

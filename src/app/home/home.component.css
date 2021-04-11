@@ -1,62 +1,87 @@
-.login-container{
-    margin-top: 1%;
-    margin-bottom: 2%;
-}
-.login-logo{
-    position: relative;
-    margin-left: -41.5%;
-}
-.login-logo img{
-    position: absolute;
-    width: 20%;
-    margin-top: 19%;
-    background: #282726;
-    border-radius: 4.5rem;
-    padding: 5%;
-}
-.login-form-1{
-    background:#fff;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-}
-.login-form-adjust-content{
-    padding: 9%; 
-}
-.login-form-1 h3{
-    text-align: center;
-    margin-bottom:12%;
-    color:#fff;
-}
-.login-form-2{
-    padding: 9%;
-    background: #fff;
-    box-shadow: 10px 8px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
-}
-.login-form-2 h3{
-    text-align: center;
-    margin-bottom:12%;
-    color: #fff;
-}
-.btnSubmit{
-    font-weight: 600;
-    width: 50%;
-    color: #282726;
-    background-color: #fff;
-    border: none;
-    border-radius: 1.5rem;
-    padding:2%;
-}
-.btnForgetPwd{
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-}
-.btnForgetPwd:hover{
-    text-decoration:none;
-    color:#fff;
+.system-name {
+    font-family: "Kaushan Script";
+    color: white;
+    font-size: 3vw;
+    margin-top: 0.1vw;
+    margin-bottom: 3%;
 }
 
-.systemTitle{
+.card {
+    display: inline-block;
+    width: 25.5vw;
+    height: 33.8vw;
+    border: 1px solid #666;
+    border-radius: .5em;
+    padding: .25em;
+    margin: 0 .5em .5em 0;
+    background-color: #fff;
+    box-shadow: .2em .2em .5em #333;
+    position: relative;
+}
+
+.card-value {
     text-align: center;
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+    position: relative;
+    top: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-symbol {
+    position: absolute;
+    font-size: 2.0vw;
+}
+
+.card-symbol-top {
+    top: 0;
+    right: 0;
+}
+
+.card-symbol-bottom {
+    bottom: 0;
+    right: 0;
+    transform: rotate(-180deg);
+}
+
+.card-symbol-red{
+    color: red;
+}
+
+.card-symbol-black{
+    color: black;
+}
+
+a.card {
+    text-decoration: none;
+}
+
+.login-card-title {
+    text-align: center;
+    
+    font-family: "Kaushan Script";
+    font-size: 4.5vw;
+}
+
+.login-black-card-title {
+    color: black;
+}
+
+.login-red-card-title {
+    color: red;
+}
+
+.login-footer {
+    text-align: center;
+    color: white;
+    font-size: 0.9vw;
+}
+
+.casino-coin-size {
+    width: 4vw;
+    height: 4vw;
+    margin-top: 0.8vw;
+    margin-bottom: 3%;
 }

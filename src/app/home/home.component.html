@@ -1,108 +1,128 @@
 <html>
 
 <body>
-  <div class="container login-container">
-    <div class="row systemTitle">
-      <h1>Planning Poker</h1>
-    </div>
+  <div class="container">
     <div class="row">
-      <div class="col-md-6 login-form-1">
-        <div class="row">
-          <div class="col-md-6">
-            <p style="color: black;">Naipe</p>
+      <div class="col-md-3 d-flex justify-content-end">
+        <img class="casino-coin-size " src="../../assets/images/PokerCoin.png" alt="Casino Coin">
+      </div>
+      <div class="col-md-6 d-flex justify-content-center">
+        <span class="system-name">Custom Planning Poker</span>
+      </div>
+      <div class="col-md-3">
+        <img class="casino-coin-size" src="../../assets/images/PokerCoin.png" alt="Casino Coin">
+      </div>
+    </div>
+    <div class="row login-container">
+      <div class="col-sm col-md d-flex flex-row-reverse">
+        <div class="nav justify-content-center card">
+          <div class="row col-md-12">
+            <span class="card-symbol card-symbol-top card-symbol-black">A<br>♠️</span>
           </div>
-          <div class="col-md-6" style="text-align: right;">
-            <p style="color: black;">Naipe</p>
-          </div>
-        </div>
-        <div class="login-form-adjust-content">
-          <h3>Create</h3>
-          <form [formGroup]="createForm" (ngSubmit)="onCreateSubmit()">
-            <div class="mb-3">
-              <input type="text" class="form-control" id="createPlayerName" placeholder="Player Name"
-                [ngClass]="{ 'is-invalid': createFormSubmitted && createFormFields.playerName.errors }"
-                formControlName="playerName">
-              <div *ngIf="createFormSubmitted && createFormFields.playerName.errors" class="invalid-feedback">
-                <div *ngIf="createFormFields.playerName.errors.required">*Player Name is a required field.</div>
-                <div *ngIf="createFormFields.playerName.errors.minlength">*Player Name must have at least 3 caracters.
+          <div class="row col-md-12 card-value">
+            <div class="col-md-12 login-card-title login-black-card-title">
+              <p>Create</p>
+            </div>
+            <div class="row">
+              <form [formGroup]="createForm" (ngSubmit)="onCreateSubmit()">
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="createPlayerName" placeholder="Player Name"
+                    [ngClass]="{ 'is-invalid': createFormSubmitted && createFormFields.playerName.errors }"
+                    formControlName="playerName">
+                  <div *ngIf="createFormSubmitted && createFormFields.playerName.errors" class="invalid-feedback">
+                    <div *ngIf="createFormFields.playerName.errors.required">*Player Name is a required field.</div>
+                    <div *ngIf="createFormFields.playerName.errors.minlength">*Player Name must have at least 3
+                      values.
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="mb-3">
-              <select class="form-select" id="selectedCards" formControlName="selectedCards"
-                (change)="onSelectedCardsChange($event.target.value)"
-                [ngClass]="{ 'is-invalid': createFormSubmitted && createFormFields.selectedCards.errors }">
-                <option value="" selected disabled>Select your cards</option>
-                <option value="0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ?">Fibonacci ( 0, 1, 2, 3, 5, 8, 13, 21, 34, 55,
-                  89, ? )</option>
-                <option value="0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?">Modified Fibonacci ( 0, ½, 1, 2, 3, 5, 8, 13,
-                  20, 40, 100, ? )</option>
-                <option value="xxs, xs, s, m, l, xl, xxl, ?">T-shirts (xxs, xs, s, m, l, xl, xxl, ?)</option>
-                <option value="Custom">Custom</option>
-              </select>
-              <div *ngIf="createFormSubmitted && createFormFields.selectedCards.errors" class="invalid-feedback">
-                <div *ngIf="createFormFields.selectedCards.errors.required">*Cards is a required field.</div>
-              </div>
-            </div>
-            <div class="mb-3" *ngIf="selectedCards == 'Custom'">
-              <input type="text" class="form-control" id="customCards" placeholder="Type your values here"
-                formControlName="customCards"
-                [ngClass]="{ 'is-invalid': createFormSubmitted && createFormFields.customCards.errors }">
-              <div>
-                Please separe your cards using comma (,)
-              </div>
-              <div *ngIf="createFormSubmitted && createFormFields.customCards.errors" class="invalid-feedback">
-                <div *ngIf="createFormFields.customCards.errors.required">*Custom Cards is a required field.</div>
-                <div *ngIf="createFormFields.customCards.errors.cardsMinLength">*Custom Cards must have at least 3
-                  caracters.</div>
-                <div *ngIf="createFormFields.customCards.errors.commaSeparator">*Please use comma as cards separator.
+                <div class="mb-3">
+                  <select class="form-select" id="selectedCards" formControlName="selectedCards"
+                    (change)="onSelectedCardsChange($event.target.value)"
+                    [ngClass]="{ 'is-invalid': createFormSubmitted && createFormFields.selectedCards.errors }">
+                    <option value="" selected disabled>Select your cards</option>
+                    <option value="0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ?">Fibonacci ( 0, 1, 2, 3, 5, 8, 13, 21, 34,
+                      55,
+                      89, ? )</option>
+                    <option value="0, ½, 1, 2, 3, 5, 8, 13, 20, 40, 100, ?">Modified Fibonacci ( 0, ½, 1, 2, 3, 5, 8,
+                      13,
+                      20, 40, 100, ? )</option>
+                    <option value="xxs, xs, s, m, l, xl, xxl, ?">T-shirts (xxs, xs, s, m, l, xl, xxl, ?)</option>
+                    <option value="Custom">Custom</option>
+                  </select>
+                  <div *ngIf="createFormSubmitted && createFormFields.selectedCards.errors" class="invalid-feedback">
+                    <div *ngIf="createFormFields.selectedCards.errors.required">*Cards is a required field.</div>
+                  </div>
                 </div>
-              </div>
+                <div class="mb-3" *ngIf="selectedCards == 'Custom'">
+                  <input type="text" class="form-control" id="customCards"
+                    placeholder="Separe your cards using comma (,)" formControlName="customCards"
+                    [ngClass]="{ 'is-invalid': createFormSubmitted && createFormFields.customCards.errors }">
+                  <div *ngIf="createFormSubmitted && createFormFields.customCards.errors" class="invalid-feedback">
+                    <div *ngIf="createFormFields.customCards.errors.cardsMinLength">*Custom Cards must have at least 3
+                      caracters.</div>
+                    <div *ngIf="createFormFields.customCards.errors.commaSeparator">*Please use comma as cards
+                      separator.
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary" type="submit">Create</button>
+              </form>
             </div>
-            <button type="button" class="btn btn-primary" type="submit">Create</button>
-          </form>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <p style="color: black;">Naipe</p>
           </div>
-          <div class="col-md-6" style="text-align: right;">
-            <p style="color: black;">Naipe</p>
+          <div class="row col-md-12">
+            <span class="card-symbol card-symbol-bottom card-symbol-black">A<br>♠️</span>
           </div>
         </div>
       </div>
-      <div class="col-md-6 login-form-2">
-        <div class="login-logo">
-          <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+      <div class="col-md-6">
+        <div class="nav justify-content-center card">
+          <div class="row col-md-12">
+            <span class="card-symbol card-symbol-top card-symbol-red">A<br>♦️</span>
+          </div>
+          <div class="row col-md-12 card-value">
+            <div class="col-md-12 login-card-title login-red-card-title">
+              <p>Join</p>
+            </div>
+            <div class="row">
+              <form [formGroup]="joinForm" (ngSubmit)="onJoinSubmit()">
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="joinPlayerName" placeholder="Player Name"
+                    [ngClass]="{ 'is-invalid': joinFormSubmitted && joinFormFields.playerName.errors }"
+                    formControlName="playerName">
+                  <div *ngIf="joinFormSubmitted && joinFormFields.playerName.errors" class="invalid-feedback">
+                    <div *ngIf="joinFormFields.playerName.errors.required">*Player Name is a required field.</div>
+                    <div *ngIf="joinFormFields.playerName.errors.minlength">*Player Name must have at least 3 caracters.
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="joinPokerTableName" placeholder="Poker Table Id"
+                    [ngClass]="{ 'is-invalid': joinFormSubmitted && joinFormFields.pokerTableId.errors }"
+                    formControlName="pokerTableId">
+                  <div *ngIf="joinFormSubmitted && joinFormFields.pokerTableId.errors" class="invalid-feedback">
+                    <div *ngIf="joinFormFields.pokerTableId.errors.required">*Poker Table Id is a required field.</div>
+                    <div *ngIf="joinFormFields.pokerTableId.errors.minlength">*Poker Table Id must have at least 5
+                      caracters.
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-success" type="submit">Join</button>
+              </form>
+            </div>
+          </div>
+          <div class="row col-md-12">
+            <span class="card-symbol card-symbol-bottom card-symbol-red">A<br>♦️</span>
+          </div>
         </div>
-        <h3>Join</h3>
-        <form [formGroup]="joinForm" (ngSubmit)="onJoinSubmit()">
-          <div class="mb-3">
-            <input type="text" class="form-control" id="joinPlayerName" placeholder="Player Name"
-              [ngClass]="{ 'is-invalid': joinFormSubmitted && joinFormFields.playerName.errors }"
-              formControlName="playerName">
-            <div *ngIf="joinFormSubmitted && joinFormFields.playerName.errors" class="invalid-feedback">
-              <div *ngIf="joinFormFields.playerName.errors.required">*Player Name is a required field.</div>
-              <div *ngIf="joinFormFields.playerName.errors.minlength">*Player Name must have at least 3 caracters.
-              </div>
-            </div>
-          </div>
-          <div class="mb-3">
-            <input type="text" class="form-control" id="joinPokerTableName" placeholder="Poker Table Id"
-              [ngClass]="{ 'is-invalid': joinFormSubmitted && joinFormFields.pokerTableId.errors }"
-              formControlName="pokerTableId">
-            <div *ngIf="joinFormSubmitted && joinFormFields.pokerTableId.errors" class="invalid-feedback">
-              <div *ngIf="joinFormFields.pokerTableId.errors.required">*Poker Table Id is a required field.</div>
-              <div *ngIf="joinFormFields.pokerTableId.errors.minlength">*Poker Table Id must have at least 5
-                caracters.
-              </div>
-            </div>
-          </div>
-          <button type="button" class="btn btn-success" type="submit">Join</button>
-        </form>
       </div>
     </div>
   </div>
+  <footer class="fixed-bottom">
+    <div class="row login-footer">
+      <p>Made with ❤️ by Leonardo Fraga</p>
+    </div>
+  </footer>
 </body>
 
 </html>

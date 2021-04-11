@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Kaushan Script";
+    src: local("Kaushan Script"), url(assets/fonts/kaushanScript/KaushanScript-Regular.ttf) format("truetype");
+}
+
+body {
+    background-color: #35654d;
+    width: 100%;
+    min-height:93vh;
+    overflow-x: hidden;
+  }
+
+.navbar-brand {
+    float:none;
+}
+
+  
